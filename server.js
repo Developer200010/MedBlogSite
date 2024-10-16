@@ -4,7 +4,7 @@ const dotenv = require("dotenv").config();
 const path = require("path")
 const db = require("./config/dbConnection.js")
 db()
-const cors = require("cors")
+const cors = require('cors')
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
