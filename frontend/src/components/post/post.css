@@ -3,6 +3,7 @@
     margin: 0px 25px 40px 25px;
     display: flex;
     flex-direction: column;
+    color: white;
   }
   
   .postImg {
@@ -16,13 +17,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
   }
   
   .postCat {
     font-family: "Varela Round", Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-size: 11px;
-    color: #be9656;
+    color:white;
     line-height: 19px;
     margin-top: 15px;
     margin-right: 10px;
@@ -35,6 +37,7 @@
     font-weight: 900;
     margin-top: 15px;
     cursor: pointer;
+    color: white;
   }
   
   .postDate {
@@ -42,8 +45,9 @@
     font-style: italic;
     font-size: 13px;
     font-weight: 400;
-    color: #999999;
+    /* color: #999999; */
     margin-top: 15px;
+    color: white;
   }
   
   .postDesc {
@@ -51,7 +55,8 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    color: #444444;
+    /* color: #444444; */
+    color: white;
     margin-top: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -60,3 +65,7 @@
     -webkit-box-orient: vertical;
   }
   
+  .links{
+    text-decoration: none;
+    color: white;
+  }

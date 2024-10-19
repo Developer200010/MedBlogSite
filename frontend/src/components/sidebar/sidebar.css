@@ -3,7 +3,7 @@
     height: fit-content;
     margin: 20px;
     padding-bottom: 30px;
-    background-color: #fdfbfb;
+    background-color: #a7f5ff;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
     font-family: "Varela Round", sans-serif;
     font-size: 12px;
     line-height: 19px;
-    color: #222222;
+    color: #000000;
     font-weight: 600;
   }
   
@@ -50,6 +50,7 @@
     width: 50%;
     margin-top: 15px;
     cursor: pointer;
+    color: rgb(144, 142, 142)44, 142, 142);
   }
   
   .sidebarSocial {
@@ -64,4 +65,7 @@
     font-size: 16px;
     margin-left: 10px;
   }
-  
+  .linked{
+    text-decoration: none;
+    color: #000000;
+  }

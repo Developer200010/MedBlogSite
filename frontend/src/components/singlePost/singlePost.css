@@ -1,5 +1,6 @@
 .singlePost {
     flex: 9;
+    color: white;
   }
   
   .singlePostWrapper {
@@ -52,7 +53,7 @@
   }
   
   .singlePostDesc {
-    color: #666;
+    color: #fffefe;
     font-size: 18px;
     line-height: 25px;
   }
