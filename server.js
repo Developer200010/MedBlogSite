@@ -5,8 +5,20 @@ const path = require("path")
 const db = require("./config/dbConnection.js")
 db()
 const cors = require('cors')
+// routes
+const authRoute = require("./routes/authRoute.js")
+const userRoute = require("./routes/userRoute.js")
+const postRoute = require("./routes/postRoute.js")
+const catRoute = require("./routes/categoryRoute.js")
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
+// using the route
+app.use("/api/auth", authRoute)
+app.use("/api/users", userRoute)
+app.use("/api/post", postRoute)
+app.use("/api/categories", catRoute)
 
 if(process.env.local === "local"){
     app.use(cors({
@@ -28,16 +40,7 @@ if(process.env.NODE_ENV === "production"){
 }
 
 
-// routes
-const authRoute = require("./routes/authRoute.js")
-const userRoute = require("./routes/userRoute.js")
-const postRoute = require("./routes/postRoute.js")
-const catRoute = require("./routes/categoryRoute.js")
-// using the route
-app.use("/api/auth", authRoute)
-app.use("/api/users", userRoute)
-app.use("/api/post", postRoute)
-app.use("/api/categories", catRoute)
+
 
 app.listen(process.env.PORT,()=>{
     console.log(`server is running fine ${process.env.PORT}`)
