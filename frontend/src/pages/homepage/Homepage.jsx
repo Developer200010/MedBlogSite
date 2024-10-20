@@ -9,15 +9,15 @@ const Homepage = () => {
 
   useEffect(()=>{
     const fetchPost = async() =>{
-      const res = await axios.get("/api/post").then((data)=> console.log(data)).catch((error)=> console.log(error.message))
-      console.log(res)
+      await axios.get("/api/post").then((data)=> setPosts(data.data)).catch((error)=> console.log(error.message))
+      // setPosts(res.data)
     }
     fetchPost()
   },[])
   return <>
     <Header/>
     <div className="home">
-    <Posts/>
+    <Posts posts = {posts}/>
     <Sidebar/>
     </div>
     </>
