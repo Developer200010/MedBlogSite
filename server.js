@@ -20,7 +20,7 @@ app.use("/api/users", userRoute)
 app.use("/api/post", postRoute)
 app.use("/api/categories", catRoute)
 
-if(process.env.local === "local"){
+if(process.env.NODE_ENV === "local"){
     app.use(cors({
         origin : "http://localhost:5000",
         credentials: true
