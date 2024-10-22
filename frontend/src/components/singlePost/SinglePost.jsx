@@ -26,7 +26,7 @@ export default function SinglePost({data}) {
           <span>
             Author:
             <b className="singlePostAuthor">
-              <Link className="link" to="/posts?username=Safak">
+              <Link className="link" to={`/?user=${data.username}`}>
                 {data.username}
               </Link>
             </b>
