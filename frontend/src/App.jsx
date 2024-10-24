@@ -6,7 +6,10 @@ import Login from "./pages/login/Login";
 import Single from "./pages/single/Single";
 import Write from "./pages/write/Write";
 import Setting from "./pages/settings/Setting";
+import { useContext } from "react";
+import { Context } from "./context/Context";
 function App() {
+  const user = useContext(Context)
   return (
     <>
     <Router>
@@ -14,11 +17,11 @@ function App() {
     <Routes>
     <Route path="/" element={<Homepage/>}/>
     <Route path="/posts" element={<Homepage/>}/>
-    <Route path="/register" element={<Register/>}/>
-    <Route path="/login" element={<Login/>}/>
+    <Route path="/register" element={user?<Homepage/>:<Register/>}/>
+    <Route path="/login" element={user?<Homepage/>:<Login/>}/>
     <Route path="/post/:id" element={<Single/>}/>
-    <Route path="/write" element={<Write/>}/>
-    <Route path="/settings" element={<Setting/>}/>
+    <Route path="/write" element={user?<Write/>:<Register/>}/>
+    <Route path="/settings" element={user?<Setting/>:<Register/>}/>
     </Routes>
     </Router>
     </>
