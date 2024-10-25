@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import "./login.css";
 import { Context } from "../../context/Context";
 import axios from "axios"
@@ -7,7 +7,7 @@ export default function Login() {
   const passwordRef = useRef()
   // using context 
   const {dispatch, isFetching} = useContext(Context);
-
+  const [error, setError] = useState(false)
   const handelSubmit = async (e) =>{
     e.preventDefault();
     dispatch({type:"login_start"});
@@ -20,7 +20,7 @@ export default function Login() {
 
     } catch (error) {
       dispatch({type:"login_failure"});
-
+      setError(true)
     }
   }
 
@@ -37,6 +37,7 @@ export default function Login() {
         ref={passwordRef}
         />
         <button className="loginButton" type="submit" disabled={isFetching}>Login</button>
+        {error && <span style={{color:"red", marginTop:"8px"}}>check you email and password.</span>}
       </form>
         <button className="loginRegisterButton">Register</button>
     </div>

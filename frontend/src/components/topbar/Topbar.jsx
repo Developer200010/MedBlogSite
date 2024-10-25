@@ -5,9 +5,9 @@ import { Context } from "../../context/Context";
 
 export default function Topbar() {
   const {user, dispatch} = useContext(Context);
-
   const handleLogout = () =>{
     dispatch({type:"logout"})
+    window.location.replace("/login")
   }
   return (
     <div className="top">
@@ -35,11 +35,18 @@ export default function Topbar() {
       <div className="topRight">
         {user ? (
           <Link className="link" to="/settings">
-            <img
+            {
+              user.profilePic !== "" ? 
+              <img
               className="topImg"
-              src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-            />
+              src={user.profilePic}
+              alt=""/> :
+              <img
+              className="topImg"
+              src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
+              alt=""/>
+            }
+             
           </Link>
         ) : (
           <ul className="topList">

@@ -17,11 +17,11 @@ function App() {
     <Routes>
     <Route path="/" element={<Homepage/>}/>
     <Route path="/posts" element={<Homepage/>}/>
-    <Route path="/register" element={user?<Homepage/>:<Register/>}/>
-    <Route path="/login" element={user?<Homepage/>:<Login/>}/>
+    <Route path="/register" element={user.user !== null ?<Homepage/>:<Register/>}/>
+    <Route path="/login" element={user.user !== null?<Homepage/>:<Login/>}/>
     <Route path="/post/:id" element={<Single/>}/>
-    <Route path="/write" element={user?<Write/>:<Register/>}/>
-    <Route path="/settings" element={user?<Setting/>:<Register/>}/>
+    <Route path="/write" element={user.user !== null?<Write/>:<Register/>}/>
+    <Route path="/settings" element={user.user !== null?<Setting/>:<Register/>}/>
     </Routes>
     </Router>
     </>
