@@ -1,86 +1,61 @@
-.write {
-  padding-top: 50px;
-}
-
-.writeImg {
-  margin-left: 150px;
-  width: 70vw;
-  height: 250px;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.writeForm {
-  position: relative;
-  margin: 15px;
-}
-
-.writeFormGroup {
-  margin-left: 150px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.writeIcon {
-  width: 25px;
-  height: 25px;
-  font-size: 20px;
-  border: 1px solid;
-  border-radius: 50%;
-  color: rgb(129, 125, 125);
+.write{
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  margin-top: 10px;
+  padding: 5px;
+  flex-direction: column;
 }
 
-.writeInput {
-  font-size: 30px;
+.writeInput{
+  margin-top: 5px;
+}
+
+.title{
+  width: 80vw;
+  height: 4vh;
+  outline: none;
+  border-radius: 4px;
+  padding: 4px;
+  color: black;
+}
+
+.writeText{
+  width: 80vw;
+  height: 50vh;
+  outline: none;
+  border-radius: 4px;
+  padding: 4px;
+  color: black;
+}
+
+.writeSubmit{
+  background-color: green;
+  padding: 5px;
   border: none;
-  padding: 20px;
-  width: 50vw;
-  height: 20px;
-  border-radius: 6px;
+  color: white;
+  position: relative;
+  width: 25%;
+  height: 28px;
+  margin-bottom: 5px;
+  border-radius: 4px;
 }
 
-.writeInput::placeholder {
-  color: rgb(189, 185, 185);
-  font-weight: 400;
+.writeImg{
+  width: 80vw;
+  height: 40vh;
+  object-fit: cover;
+  border-radius: 8px;
+  padding: 5px;
 }
 
-.writeInput:focus {
-  outline-style: none;
-}
 .img{
-  font-size: 25px;
-  margin: 3px;
-  color: white;
-  background: rgb(255, 174, 174);
-  padding: 8px;
-  border-radius: 50%;
-}
-
-.writeText {
-  width: 70vw;
-  height: 60vh;
-  font-family: inherit;
-  font-size: 20px;
-  border-radius: 5px;
-}
-
-.writeSubmit {
-  position: absolute;
-  top: 20px;
-  right: 50px;
-  color: white;
-  background-color: teal;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
+  background-color: #fff;
   display: flex;
+  width: 80px;
+  height: 30px;
+  color: rgb(6, 6, 6);
   align-items: center;
+  justify-content: center;
+  border-radius: 3px;
 }
