@@ -25,13 +25,13 @@ export default function Write() {
         data.append("file", file);
         newPost.photo = filename;
         try {
-          await axios.post("/upload", data);
+          await axios.post("/api/upload", data);
         } catch (error) {
           console.log(error.message)
         }
       }
       try {
-        const res = await axios.post("/post", newPost);
+        const res = await axios.post("/api/post", newPost);
         window.location.replace("/post/" + res.data._id);
       } catch (err) {
         setError(true)
