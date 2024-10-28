@@ -38,7 +38,8 @@ export default function SinglePost({ data }) {
       title,
       desc 
     })
-    window.location.reload();
+    // window.location.reload();
+    setUpdateMode(false)
   }
 
   return (
