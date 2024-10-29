@@ -39,16 +39,16 @@ app.use("/api/post", postRoute)
 app.use("/api/categories", catRoute)
 
 
-if(process.env.NODE_ENV === "local"){
-    app.use(cors({
-        origin : "http://localhost:5000",
-        credentials: true
-    }))
-}else{
-    app.use(cors({
-        credentials:true
-    }))
-}
+// if(process.env.NODE_ENV === "local"){
+//     app.use(cors({
+//         origin : "http://localhost:5000",
+//         credentials: true
+//     }))
+// }else{
+//     app.use(cors({
+//         credentials:true
+//     }))
+// }
 
 if(process.env.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname, "./frontend/build")));

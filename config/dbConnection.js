@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv").config();
 
 const dbConnect = async () => {
   try {
@@ -8,13 +8,14 @@ const dbConnect = async () => {
         .connect(process.env.LOCAL_DB_URL)
         .then(() => console.log("local db is connected successfully"))
         .catch((error) => console.log(error.message));
-    }else{
-        await mongoose.connect(process.env.MONGO_URL)
-        .then(()=> console.log("production db is running successfully"))
-        .catch((error)=> console.log(error.message))
+    } else {
+      await mongoose
+        .connect(process.env.MONGO_URL)
+        .then(() => console.log("production db is running successfully"))
+        .catch((error) => console.log(error.message));
     }
   } catch (error) {
-    console.log("db connection failed")
+    console.log("db connection failed");
   }
 };
 module.exports = dbConnect;
