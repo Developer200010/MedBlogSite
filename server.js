@@ -2,8 +2,7 @@ const express = require("express");
 const app = express();
 const db = require("./config/dbConnection.js")
 db()
-const dotenv = require("dotenv").config()
-console.log(dotenv)
+require("dotenv").config()
 // const cors = require('cors')
 const multer = require("multer");
 const path = require("path");
