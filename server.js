@@ -1,23 +1,25 @@
 const express = require("express");
 const app = express();
-const db = require("./config/dbConnection.js")
-db()
-require("dotenv").config()
-// const cors = require('cors')
-const multer = require("multer");
 const path = require("path");
+const multer = require("multer");
+require("dotenv").config();
+const db = require("./config/dbConnection.js");
 
+// Initialize database connection
+db();
+
+// Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use("/images", express.static(path.join(__dirname, "/images")));
-// routes
-const authRoute = require("./routes/authRoute.js")
-const userRoute = require("./routes/userRoute.js")
-const postRoute = require("./routes/postRoute.js")
-const catRoute = require("./routes/categoryRoute.js")
 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+// Route imports
+const authRoute = require("./routes/authRoute.js");
+const userRoute = require("./routes/userRoute.js");
+const postRoute = require("./routes/postRoute.js");
+const catRoute = require("./routes/categoryRoute.js");
 
+// File upload configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "images");
@@ -26,42 +28,29 @@ const storage = multer.diskStorage({
     cb(null, req.body.name);
   },
 });
-
 const upload = multer({ storage: storage });
+
+// File upload endpoint
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
 });
 
-// using the route
-app.use("/api/auth", authRoute)
-app.use("/api/users", userRoute)
-app.use("/api/post", postRoute)
-app.use("/api/categories", catRoute)
+// Route setup
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
+app.use("/api/post", postRoute);
+app.use("/api/categories", catRoute);
 
-
-// if(process.env.NODE_ENV === "local"){
-//     app.use(cors({
-//         origin : "http://localhost:5000",
-//         credentials: true
-//     }))
-// }else{
-//     app.use(cors({
-//         credentials:true
-//     }))
-// }
-// console.log(NODE_ENV)
-console.log(process.env.NODE_ENV)
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static(path.join(__dirname, "./frontend/build")));
-    app.get("*",(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'./','frontend','build','index.html'))
-    })
-
+// Static file configuration for production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "./frontend/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
 }
 
-
-
-
-app.listen(process.env.PORT,()=>{
-    console.log(`server is running fine ${process.env.PORT}`)
-})
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
