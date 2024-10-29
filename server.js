@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
-const dotenv = require("dotenv").config();
 const db = require("./config/dbConnection.js")
 db()
-const cors = require('cors')
+const dotenv = require("dotenv").config()
+console.log(dotenv)
+// const cors = require('cors')
 const multer = require("multer");
 const path = require("path");
 
@@ -49,7 +50,8 @@ app.use("/api/categories", catRoute)
 //         credentials:true
 //     }))
 // }
-
+// console.log(NODE_ENV)
+console.log(process.env.NODE_ENV)
 if(process.env.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname, "./frontend/build")));
     app.get("*",(req,res)=>{
