@@ -80,6 +80,28 @@ router.get("/",async (req,res)=>{
     } catch (error) {
         res.status(500).json(error)
     }
-})
+});
+
+// In your post routes (e.g., routes/posts.js)
+// router.get('/', async (req, res) => {
+//     const page = parseInt(req.query.page) || 1; // Defaults to page 1
+//     const limit = parseInt(req.query.limit) || 5; // Defaults to 10 posts per page
+  
+//     try {
+//       const totalPosts = await postModel.countDocuments(); // Get total number of posts
+//       const posts = await postModel.find()
+//         .skip((page - 1) * limit) // Skip posts for previous pages
+//         .limit(limit); // Limit results to the specified number
+  
+//       res.status(200).json({
+//         totalPages: Math.ceil(totalPosts / limit),
+//         currentPage: page,
+//         posts
+//       });
+//     } catch (error) {
+//       res.status(500).json({ message: error.message });
+//     }
+//   });
+  
 
 module.exports = router;
