@@ -1,6 +1,6 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 import Reducer from "./Reducer";
-
+import axios from "axios"
 const INITIAL_STATE = {
   user: JSON.parse(localStorage.getItem("user")) || null,
   isFetching: false,
@@ -23,7 +23,7 @@ export const ContextProvider = ({ children }) => {
         user: state.user,
         isFetching: state.isFetching,
         error: state.error,
-        dispatch
+        dispatch,
       }}
     >
       {children}

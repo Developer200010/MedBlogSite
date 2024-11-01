@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    width: 25vw;
+    height: 5vh;
+    padding: 4px;
+    border-radius: 5px;
+}
+input{
+    background-color: aliceblue;
+    border: none;
+    outline: none;
+    width: 18vw;
+    height: 5vh;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.btn{
+    /* position: absolute; */
+    background-color: blueviolet;
+    padding: 4px;
+    top: 5px;
+}

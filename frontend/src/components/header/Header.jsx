@@ -1,3 +1,4 @@
+import Search from '../search/Search'
 import './header.css'
 
 import React from 'react'

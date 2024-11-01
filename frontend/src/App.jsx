@@ -8,6 +8,7 @@ import Write from "./pages/write/Write";
 import Setting from "./pages/settings/Setting";
 import { useContext } from "react";
 import { Context } from "./context/Context";
+import Search from "./components/search/Search";
 function App() {
   const user = useContext(Context)
   return (
@@ -21,6 +22,7 @@ function App() {
     <Route path="/login" element={user.user !== null?<Homepage/>:<Login/>}/>
     <Route path="/post/:id" element={<Single/>}/>
     <Route path="/write" element={user.user !== null?<Write/>:<Register/>}/>
+    <Route path="/" element={user.user !== null?<Search/>:<Register/>}/>
     <Route path="/settings" element={user.user !== null?<Setting/>:<Register/>}/>
     </Routes>
     </Router>

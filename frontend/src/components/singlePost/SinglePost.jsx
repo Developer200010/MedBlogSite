@@ -11,7 +11,7 @@ export default function SinglePost({ data }) {
   const { user } = useContext(Context);
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  
+
   const handleDelete = async () => {
     try {
       await axios.delete("/api/post/" + path, {
@@ -23,24 +23,31 @@ export default function SinglePost({ data }) {
     }
   };
 
-  useEffect(()=>{
-    const getPost = async() =>{
-      const res= await axios.get("/api/post/" + path);
-      setTitle(res.data.title)
-      setDesc(res.data.desc)
-    }
-    getPost()
-  },[path])
+  // creating sharable link
+  const shareableLink = `${window.location.origin}/post/${path}`;
+  const copyLink = () => {
+    navigator.clipboard.writeText(shareableLink);
+    alert("link copied to clipboard");
+  };
 
-  const handleEdit = async() =>{
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get("/api/post/" + path);
+      setTitle(res.data.title);
+      setDesc(res.data.desc);
+    };
+    getPost();
+  }, [path]);
+
+  const handleEdit = async () => {
     await axios.put(`/api/post/${data._id}`, {
       username: user.username,
       title,
-      desc 
-    })
+      desc,
+    });
     // window.location.reload();
-    setUpdateMode(false)
-  }
+    setUpdateMode(false);
+  };
 
   return (
     <div className="singlePost">
@@ -55,7 +62,11 @@ export default function SinglePost({ data }) {
           <img className="singlePostImg" src={PF + data.photo} alt="" />
         )}
         {updateMode ? (
-          <input value={title} className="singlePostTitleInput" onChange={(e)=> setTitle(e.target.value)} />
+          <input
+            value={title}
+            className="singlePostTitleInput"
+            onChange={(e) => setTitle(e.target.value)}
+          />
         ) : (
           <h1 className="singlePostTitle">
             {data.title}
@@ -76,6 +87,11 @@ export default function SinglePost({ data }) {
                 </i>
               </div>
             )}
+            <div className="singlePostEdit">
+              <i className="singlePostIcon far fa-trash-alt" onClick={copyLink}>
+                share
+              </i>
+            </div>
           </h1>
         )}
 
@@ -92,8 +108,15 @@ export default function SinglePost({ data }) {
         </div>
         {updateMode ? (
           <>
-          <textarea className="singlePostDescInput" onChange={(e)=> setDesc(e.target.value)}>{desc}</textarea>
-          <button className="updateBtn" onClick={handleEdit}>update</button>
+            <textarea
+              className="singlePostDescInput"
+              onChange={(e) => setDesc(e.target.value)}
+            >
+              {desc}
+            </textarea>
+            <button className="updateBtn" onClick={handleEdit}>
+              update
+            </button>
           </>
         ) : (
           <p className="singlePostDesc">{data.desc}</p>

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./topbar.css";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
+import Search from "../search/Search";
 
 export default function Topbar() {
   const {user, dispatch} = useContext(Context);
@@ -27,6 +28,11 @@ export default function Topbar() {
           <li className="topListItem linked">
             <Link className="linked" to="/write">
               WRITE
+            </Link>
+          </li>
+          <li className="topListItem linked">
+            <Link className="linked" to="/">
+              <Search/>
             </Link>
           </li>
           {user && <li className="topListItem" onClick={handleLogout}>LOGOUT</li>}
