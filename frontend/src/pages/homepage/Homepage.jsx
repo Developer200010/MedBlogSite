@@ -10,15 +10,16 @@ const Homepage = () => {
   const {search} = useLocation();
   useEffect(()=>{
     const fetchPost = async() =>{
-      await axios.get("/api/post" + search).then((data)=> setPosts(data.data)).catch((error)=> console.log(error.message))
-      // setPosts(res.data)
+      const res = await axios.get("/api/post" + search)
+      setPosts(res.data);
+      console.log(res.data)
     }
     fetchPost()
   },[search])
   return <>
     <Header/>
     <div className="home">
-    <Posts posts = {posts}/>
+    <Posts post = {posts}/>
     <Sidebar/>
     </div>
     </>

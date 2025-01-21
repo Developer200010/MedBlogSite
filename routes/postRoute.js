@@ -65,6 +65,10 @@ router.get("/:id",async (req,res)=>{
 router.get("/",async (req,res)=>{
         const username = req.query.user;
         const catName = req.query.category;
+        let page = Number(req.query.page) || 1;
+        let limit = Number(req.query.limit) || 6;
+        let skip = (page-1) * limit;
+
     try {
         let post;
         if(username){
@@ -74,8 +78,10 @@ router.get("/",async (req,res)=>{
                 $in: [catName]
             }});
         }else{
-            post = await postModel.find();
+            post = await postModel.find().skip(skip).limit(limit);
         }
+        const total = await postModel.countDocuments();
+        const totalPages = Math.ceil(total / limit);
         res.status(200).json(post)
     } catch (error) {
         res.status(500).json(error)

@@ -4,6 +4,7 @@ import "./post.css";
 export default function Post({ img, data }) {
   const PF = "http://localhost:5000/images/"
   return (
+    <>
     <div className="post">
       {data.photo === "" ? (
         <img className="postImg" src={img} alt="" />
@@ -11,11 +12,11 @@ export default function Post({ img, data }) {
         <img className="postImg" src={PF + data.photo} alt="" />
       )}
       <div className="postInfo">
-        <div className="postCats">
+        {/* <div className="postCats">
           {data.categories.map((c) => (
             <span className="postCat">{c.name}</span>
           ))}
-        </div>
+        </div> */}
         <span className="postTitle">
           <Link to={`/post/${data._id}`} className="links">
             {data.title}
@@ -28,5 +29,7 @@ export default function Post({ img, data }) {
       </div>
       <p className="postDesc">{data.desc}</p>
     </div>
+ 
+    </>
   );
 }
